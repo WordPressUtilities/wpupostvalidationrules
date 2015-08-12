@@ -1,7 +1,10 @@
 # WPU Post Validation Rules
-Add validation rules before saving a WordPress post
+
+Add custom validation rules before saving a WordPress post : prevent the use of a word, too many links, too few images, etc.
+Translated in English, French, Spanish, Italian, Deutsch.
 
 ## How to install
+
 * Put this folder to your wp-content/plugins/ folder.
 * Activate the plugin in "Plugins" admin section.
 
@@ -21,6 +24,8 @@ function myproject_neveraz($messages, $content) {
 ```
 
 ## Roadmap
-- [ ] French translation.
 - [ ] Back-end validation.
-- [ ] Add an (×) button to the error message.
+- [ ] Limit to a special post type.
+- [ ] Add a level for each rule.
+- [x] French, Spanish, Italian, Deutsch translation.
+- [x] Add an (×) button to the error message.

@@ -1,5 +1,6 @@
 jQuery(document).ready(function validator_ready() {
-    jQuery('#post').submit(wpupostvalidationrules_ready_submit);
+    jQuery('#post').attr('data-validator-can-submit', '0');
+    jQuery('#post').on('submit',wpupostvalidationrules_ready_submit);
 });
 
 /* ----------------------------------------------------------
@@ -25,7 +26,7 @@ function wpupostvalidationrules_ready_submit(e) {
         jQuery('#ajax-loading').hide();
         jQuery('.wpupostvalidationrules-message').remove();
         jQuery('#publish').removeClass('button-primary-disabled');
-        var sep = '<br />• ';
+        var sep = window.wpupostvalidationrules__separator;
         if (!response.success) {
             message = window.wpupostvalidationrules__message + sep + response.data.join(sep);
             wpupostvalidationrules_insert_error_message(message);
@@ -42,8 +43,8 @@ function wpupostvalidationrules_ready_submit(e) {
 
 function wpupostvalidationrules_insert_error_message(message) {
     var block_message = jQuery('<div></div>'),
-        button = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">&times;</span></button>';
-    block_message.addClass('wpupostvalidationrules-message error notice notice-error is-dismissible below-h2');
+        button = window.wpupostvalidationrules__msgbutton;
+    block_message.addClass(window.wpupostvalidationrules__msgclasses);
     block_message.on('click', '.notice-dismiss', function(e) {
         e.preventDefault();
         block_message.remove();
